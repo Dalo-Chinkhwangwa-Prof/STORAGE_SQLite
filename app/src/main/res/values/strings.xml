@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SQLiteDatabasePrj</string>
+    <string name="id_d">ID: %d</string>
 </resources>

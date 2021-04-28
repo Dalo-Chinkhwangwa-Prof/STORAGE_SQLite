@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/position_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        tools:src="@tools:sample/avatars"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@color/white"
+        android:id="@+id/id_textview"
+        android:padding="8dp"
+        android:text="@string/id_d"
+        android:layout_margin="16dp"/>
+    <TextView
+        android:id="@+id/name_textview"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/position_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="John Doe"
+        android:layout_margin="16dp"/>
+
+    <TextView
+        android:id="@+id/position_textview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toEndOf="@id/position_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/name_textview"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_margin="16dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

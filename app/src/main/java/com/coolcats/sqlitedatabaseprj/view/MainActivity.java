@@ -19,6 +19,7 @@ import com.coolcats.sqlitedatabaseprj.databinding.ActivityMainBinding;
 import com.coolcats.sqlitedatabaseprj.model.User;
 import com.coolcats.sqlitedatabaseprj.model.db.UserDatabaseHelper;
 import com.coolcats.sqlitedatabaseprj.util.Position;
+import com.coolcats.sqlitedatabaseprj.view.adapter.UserAdapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,6 +38,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     private ActivityMainBinding binding;
 
+    private UserAdapter userAdapter = new UserAdapter(new ArrayList<>());
+
     private List<String> options = new ArrayList<String>(Arrays.asList("ANDROID_DEVELOPER", "IOS_DEVELOPER", "MANAGER"));
     private int id;
 
@@ -47,6 +50,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         setContentView(binding.getRoot());
         ArrayAdapter<String> adapter=  new ArrayAdapter<String>(this, R.layout.spinner_item_layout,R.id.item_text,  options);
 //
+
+        binding.outputTextview2.setAdapter(userAdapter);
+
         binding.spinner.setAdapter(adapter);
         binding.spinner.setOnItemSelectedListener(this);
         dbHelper = new UserDatabaseHelper(this);
@@ -101,19 +107,14 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             users.add(user);
             sBuilder.append(user.getName()).append(" : ").append(user.getPosition().name()).append("\n");
         }
-
-        binding.outputTextview2.setText(sBuilder.toString());
-
         dbC.close();
         displayUsers(users);
 
     }
 
+
     private void displayUsers(List<User> users) {
-
-        for(int i = 0; i < users.size(); i++)
-            logMessage(users.get(i).toString());
-
+        userAdapter.updateList(users);
 
     }
 
